@@ -1,3 +1,4 @@
+import com.example.demo.Models.Customer;
 import com.example.demo.Store;
 
 import java.sql.*;
@@ -22,8 +23,16 @@ public class Main {
         }*/
 
         Store store= new Store();
+        /*Customer mackan = new Customer("Marucs", "TL", "Sweden", "39244", "mtl@kek.se", "123456");
         System.out.println(store.getSpecificCustomerFromDB(1));
         System.out.println( store.getSpecificCustomerByNameFromDB("a"));
+        store.addCustomer(mackan);
+        System.out.println("Addededded");
+        mackan.setFirstName("Marcus");
+        store.updateCustomer(mackan, 60);*/
+        //store.getCustomersPerCountry();
+        store.getCustomerSpentList();
+        store.getCustomerMostPopularGenreList(12);
 
 
     }
