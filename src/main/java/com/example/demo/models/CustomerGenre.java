@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.models;
 
 public class CustomerGenre {
     private String genreName;

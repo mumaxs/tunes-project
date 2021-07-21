@@ -1,14 +1,14 @@
-package com.example.demo;
+package com.example.demo.repository;
 
-import com.example.demo.Models.Customer;
-import com.example.demo.Models.CustomerCountry;
-import com.example.demo.Models.CustomerGenre;
-import com.example.demo.Models.CustomerSpender;
+import com.example.demo.models.Customer;
+import com.example.demo.models.CustomerCountry;
+import com.example.demo.models.CustomerGenre;
+import com.example.demo.models.CustomerSpender;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Store {
+public class CustomerRepository {
 
     public ArrayList<Customer> getAllCustomersFromDB() {
         ArrayList<Customer> customerList = new ArrayList<Customer>();
