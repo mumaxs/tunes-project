@@ -20,6 +20,7 @@ public class TFCustomerController {
         model.addAttribute("customers", tFrepository.getRandomArtists());
         model.addAttribute("tracks", tFrepository.getRandomTrack());
         model.addAttribute("genres", tFrepository.getRandomGenre());
+        model.addAttribute("albums", tFrepository.getRandomAlbum());
         return "index";
     }
     @RequestMapping(value = "/tracks",method = RequestMethod.GET)

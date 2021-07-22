@@ -3,87 +3,48 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Titlen</title>
+        <div class="d-flex justify-content-center"><nav class="navbar navbar-white bg-white">
+            <form class="d-flex" action="#" th:action="@{/search}" method="get">
+                <input class="form-control" type="text" id="trackInfo" name="search" placeholder="Enter the song you are searching for..." style="width: 30rem;">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> </nav>
+        </div>
 </head>
 <body>
-<!--<div class="row">
-    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">Artists</div>
-        <div class="card-body">
-            <h5 class="card-title">Five random artists</h5>
-            <p class="card-text" th:each="cuts: ${customers}" th:text="${cuts.getName}"></p>
-        </div>
-    </div>
-
-    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">Tracks</div>
-        <div class="card-body">
-            <h5 class="card-title">Five random tracks</h5>
-            <p class="card-text" th:each="cuts: ${tracks}" th:text="${cuts.getName}"></p>
-        </div>
-    </div>
-
-    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">Genres</div>
-        <div class="card-body">
-            <h5 class="card-title">Five random genres</h5>
-            <p class="card-text" th:each="cuts: ${genres}" th:text="${cuts.getName}"/>
-        </div>
-    </div>
-    </div>
-    <div>
-    <div><tr th:each="cuts: ${customers}">
-        <td th:text="${cuts.getName}"></td>
-    </tr>
-    </div>
-    <div>
-    <tr th:each="cuts: ${tracks}">
-        <td th:text="${cuts.getName}"></td>
-    </tr>
-    </div>
-    <div>
-    <tr th:each="cuts: ${genres}">
-        <td th:text="${cuts.getName}"></td>
-    </tr>
-    </div>-->
-<div>
-    <div class="row">
-        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Artists</div>
+<div class="d-flex justify-content-center">
+    <div align="center" class="d-flex justify-content-center">
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <h5 class="card-header">Five random artists</h5>
             <div class="card-body">
-                <h5 class="card-title">Five random artists</h5>
+                <!--<h5 class="card-title">Five random artists</h5>-->
                 <p class="card-text" th:each="cuts: ${customers}" th:text="${cuts.getName}"></p>
             </div>
         </div>
 
-        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Tracks</div>
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <h5 class="card-header">Five random tracks</h5>
             <div class="card-body">
-                <h5 class="card-title">Five random tracks</h5>
+                <!--<h5 class="card-title">Five random tracks</h5>-->
                 <p class="card-text" th:each="cuts: ${tracks}" th:text="${cuts.getName}"></p>
             </div>
         </div>
 
-        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Genres</div>
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <h5 class="card-header">Five random genres</h5>
             <div class="card-body">
-                <h5 class="card-title">Five random genres</h5>
+               <!-- <h5 class="card-title">Five random genres</h5>-->
                 <p class="card-text" th:each="cuts: ${genres}" th:text="${cuts.getName}"/>
             </div>
         </div>
-        <form action="#" th:action="@{/search}" method="get">
-            <label for="trackInfo">Search for track information</label>
-            <input type="text" id="trackInfo" name="search" placeholder="Enter the song you are searching for...">
-            <button type="submit">search</button>
-        </form>
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <h5 class="card-header">Five random albums</h5>
+            <div class="card-body">
+                <!-- <h5 class="card-title">Five random genres</h5>-->
+                <p class="card-text" th:each="cuts: ${albums}" th:text="${cuts.getName}"/>
+            </div>
+        </div>
     </div>
 </div>
-
-<!--<tr th:each="cust:${customers}">
-    <td th:text="${cust.getFirstName()}"></td>
-</tr>-->
-
-
-
 </body>
 </html>

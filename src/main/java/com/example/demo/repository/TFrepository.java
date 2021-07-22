@@ -1,9 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.models.Artist;
-import com.example.demo.models.Genre;
-import com.example.demo.models.Track;
-import com.example.demo.models.TrackSearch;
+import com.example.demo.models.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -77,6 +74,28 @@ public class TFrepository {
             throwables.printStackTrace();
         }
         return genreArrayList;
+    }
+    public ArrayList<Album> getRandomAlbum() {
+
+        ArrayList<Album> albumArrayList= new ArrayList<>();
+        String URL = "jdbc:sqlite::resource:Chinook_Sqlite (1).sqlite";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(URL);
+            PreparedStatement preparedStatement = conn.prepareStatement("select *\n" +
+                    "from Album\n" +
+                    "order by RANDOM()\n" +
+                    "limit 5");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                Album album= new Album();
+                album.setName(rs.getString("Title"));
+                albumArrayList.add(album);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return albumArrayList;
     }
     public ArrayList<TrackSearch> getTrackInfo(String trackSearch) {
 
