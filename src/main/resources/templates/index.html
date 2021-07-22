@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.or>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div class="row">
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Artists</div>
+        <div class="card-body">
+            <h5 class="card-title">Five random artists</h5>
+            <p class="card-text" th:each="cuts: ${customers}" th:text="${cuts.getName}"></p>
+        </div>
+    </div>
+
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Tracks</div>
+        <div class="card-body">
+            <h5 class="card-title">Five random tracks</h5>
+            <p class="card-text" th:each="cuts: ${tracks}" th:text="${cuts.getName}"></p>
+        </div>
+    </div>
+
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Genres</div>
+        <div class="card-body">
+            <h5 class="card-title">Five random genres</h5>
+            <p class="card-text" th:each="cuts: ${genres}" th:text="${cuts.getName}"/>
+        </div>
+    </div>
+    </div>
+    <div>
+    <div><tr th:each="cuts: ${customers}">
+        <td th:text="${cuts.getName}"></td>
+    </tr>
+    </div>
+    <div>
+    <tr th:each="cuts: ${tracks}">
+        <td th:text="${cuts.getName}"></td>
+    </tr>
+    </div>
+    <div>
+    <tr th:each="cuts: ${genres}">
+        <td th:text="${cuts.getName}"></td>
+    </tr>
+    </div>-->
+<div>
+    <div class="row">
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Artists</div>
+            <div class="card-body">
+                <h5 class="card-title">Five random artists</h5>
+                <p class="card-text" th:each="cuts: ${customers}" th:text="${cuts.getName}"></p>
+            </div>
+        </div>
+
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Tracks</div>
+            <div class="card-body">
+                <h5 class="card-title">Five random tracks</h5>
+                <p class="card-text" th:each="cuts: ${tracks}" th:text="${cuts.getName}"></p>
+            </div>
+        </div>
+
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Genres</div>
+            <div class="card-body">
+                <h5 class="card-title">Five random genres</h5>
+                <p class="card-text" th:each="cuts: ${genres}" th:text="${cuts.getName}"/>
+            </div>
+        </div>
+        <form action="#" th:action="@{/search}" method="get">
+            <label for="trackInfo">Search for track information</label>
+            <input type="text" id="trackInfo" name="search" placeholder="Enter the song you are searching for...">
+            <button type="submit">search</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
