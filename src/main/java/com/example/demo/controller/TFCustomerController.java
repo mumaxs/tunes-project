@@ -1,5 +1,4 @@
 package com.example.demo.controller;
-
 import com.example.demo.models.TrackSearch;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.TFrepository;
@@ -39,6 +38,5 @@ public class TFCustomerController {
         model.addAttribute("searchTerm",search);
         return "search";
     }
-
 
 }
