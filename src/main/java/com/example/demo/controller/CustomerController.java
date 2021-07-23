@@ -10,51 +10,55 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 @RestController
 public class CustomerController {
-    CustomerRepository customerRepository = new CustomerRepository();
+    private CustomerRepository customerRepository = new CustomerRepository();
 
-    @GetMapping("/all-customers")
+
+    @GetMapping("/api/all-customers")
     public ArrayList<Customer> getAllCustomers() {
         return customerRepository.getAllCustomersFromDB();
     }
 
-    @GetMapping("/customer/id/{id}")
+    @GetMapping("/api/customer/id/{id}")
     public Customer getSpecificCustomer(@PathVariable int id) {
         return customerRepository.getSpecificCustomerFromDB(id);
     }
 
-    @GetMapping("/customer/name/{name}")
-    public ArrayList<Customer> getSpecificCustomerByNameFromDB(@PathVariable String name) {
-        return customerRepository.getSpecificCustomerByNameFromDB(name);
+    @GetMapping("/api/customer/name/{name}")
+    public ArrayList<Customer> getCustomersBySearchWordFromDB(@PathVariable String name) {
+        return customerRepository.getCustomersBySearchWordFromDB(name);
     }
 
-    @GetMapping("/customers/page/{limit}/{offset}")
+    @GetMapping("/api/customers/page/{limit}/{offset}")
     public ArrayList<Customer> getCustomerPageFromDB(@PathVariable int limit, @PathVariable int offset) {
         return customerRepository.getCustomerPageFromDB(limit, offset);
     }
 
-    @RequestMapping(value = "/customer/add-customer", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/customer/add-customer", method = RequestMethod.POST)
     public void addNewCustomer(@RequestBody Customer customer) {
         customerRepository.addCustomer(customer);
     }
 
-    @RequestMapping(value = "/customer/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/customer/update/{id}", method = RequestMethod.PUT)
     public void updateExistingCustomer(@PathVariable int id, @RequestBody Customer customer) {
         customerRepository.updateCustomer(customer, id);
     }
 
-    @GetMapping("/customers/country")
+    @GetMapping("/api/customers/country")
     public ArrayList<CustomerCountry> getCustomersPerCountry() {
         return customerRepository.getCustomersPerCountry();
     }
 
-    @GetMapping("/customer/spent")
+    @GetMapping("/api/customer/spent")
     public ArrayList<CustomerSpender> getCustomerSpentList() {
         return customerRepository.getCustomerSpentList();
     }
 
-    @GetMapping("/customer/genre/{customerID}")
+    @GetMapping("/api/customer/genre/{customerID}")
     public ArrayList<CustomerGenre> getCustomerMostPopularGenreList(@PathVariable int customerID) {
         return customerRepository.getCustomerMostPopularGenreList(customerID);
     }

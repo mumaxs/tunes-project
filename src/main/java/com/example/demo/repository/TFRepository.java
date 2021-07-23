@@ -5,37 +5,48 @@ import com.example.demo.models.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class TFrepository {
+public class TFRepository {
+    private String URL= ConnectionHelper.DATABASE_CONNECTION_URL;
+    private Connection conn=null;
 
+    /**
+     *
+     * @return five random artists from the artist table.
+     */
     public ArrayList<Artist> getRandomArtists() {
 
         ArrayList<Artist> artistArrayList= new ArrayList<>();
-        String URL = "jdbc:sqlite::resource:Chinook_Sqlite (1).sqlite";
-        Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
             PreparedStatement preparedStatement = conn.prepareStatement("select *\n" +
-                    "from Customer\n" +
+                    "from Artist\n" +
                     "order by RANDOM()\n" +
                     "limit 5");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
                 Artist artist= new Artist();
-                artist.setName(rs.getString("FirstName"));
+                artist.setName(rs.getString("Name"));
                 artistArrayList.add(artist);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
         return artistArrayList;
     }
 
-
+    /**
+     *
+     * @return five random songs from the track table.
+     */
     public ArrayList<Track> getRandomTrack() {
 
         ArrayList<Track> trackArrayList= new ArrayList<>();
-        String URL = "jdbc:sqlite::resource:Chinook_Sqlite (1).sqlite";
-        Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
             PreparedStatement preparedStatement = conn.prepareStatement("select *\n" +
@@ -48,16 +59,25 @@ public class TFrepository {
                 track.setName(rs.getString("Name"));
                 trackArrayList.add(track);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
         return trackArrayList;
     }
+
+    /**
+     *
+     * @return five random genres from the genre table.
+     */
     public ArrayList<Genre> getRandomGenre() {
 
         ArrayList<Genre> genreArrayList= new ArrayList<>();
-        String URL = "jdbc:sqlite::resource:Chinook_Sqlite (1).sqlite";
-        Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
             PreparedStatement preparedStatement = conn.prepareStatement("select *\n" +
@@ -70,16 +90,25 @@ public class TFrepository {
                 genre.setName(rs.getString("Name"));
                 genreArrayList.add(genre);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
         return genreArrayList;
     }
+
+    /**
+     *
+     * @return five random albums from the album table.
+     */
     public ArrayList<Album> getRandomAlbum() {
 
         ArrayList<Album> albumArrayList= new ArrayList<>();
-        String URL = "jdbc:sqlite::resource:Chinook_Sqlite (1).sqlite";
-        Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
             PreparedStatement preparedStatement = conn.prepareStatement("select *\n" +
@@ -92,17 +121,31 @@ public class TFrepository {
                 album.setName(rs.getString("Title"));
                 albumArrayList.add(album);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
         return albumArrayList;
     }
+
+    /**
+     *
+     * @param trackSearch is a string used to search for a specific track in the DB.
+     * @return The method returns a trackSearchArrayList object consisted of:
+     * 1)the tracks name,
+     * 2)the artists name who created the song,
+     * 3)the genre of the song,
+     * 4)the album of the song
+     */
     public ArrayList<TrackSearch> getTrackInfo(String trackSearch) {
 
-        ArrayList<TrackSearch> arrayList= new ArrayList<>();
+        ArrayList<TrackSearch> trackSearchArrayList= new ArrayList<>();
 
-        String URL = "jdbc:sqlite::resource:Chinook_Sqlite (1).sqlite";
-        Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
             PreparedStatement preparedStatement = conn.prepareStatement("SELECT Track.Name, Artist.Name,Album.Title, Genre.Name\n" +
@@ -114,12 +157,18 @@ public class TFrepository {
             preparedStatement.setString(1,"%" + trackSearch + "%");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                arrayList.add(new TrackSearch(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                trackSearchArrayList.add(new TrackSearch(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
-        return arrayList;
+        return trackSearchArrayList;
     }
 
 

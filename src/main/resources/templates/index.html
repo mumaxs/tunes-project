@@ -18,7 +18,7 @@
             <h5 class="card-header">Five random artists</h5>
             <div class="card-body">
                 <!--<h5 class="card-title">Five random artists</h5>-->
-                <p class="card-text" th:each="cuts: ${customers}" th:text="${cuts.getName}"></p>
+                <p class="card-text" th:each="cuts: ${artists}" th:text="${cuts.getName}"></p>
             </div>
         </div>
 
