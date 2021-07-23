@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-/**
- *
- */
 @RestController
 public class CustomerController {
     private CustomerRepository customerRepository = new CustomerRepository();
